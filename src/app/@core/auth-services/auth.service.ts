@@ -21,31 +21,12 @@ export const HTTP_OPTIONS = {
 export class AuthService {
   constructor(private http: HttpClient) { }
 
-  // login(email: string, password: string): Observable<any> {
-  //   return this.http.post(
-  //     environment.AuthroizeUrl + "/authorize",
-  //     {
-  //       email,
-  //       password,
-  //     },
-  //     HTTP_OPTIONS
-  //   );
-  // }
-
   loginWithAdress(email: string, password: string): Observable<any> {
     return this.http.post(environment.AuthroizeUrl + "/Authorize",
       {
         email,
         password,
       }, HTTP_OPTIONS
-      //   {
-      //   headers: new HttpHeaders()
-      //     .set('Content-Type', "application/json")
-      //     .set('Access-Control-Allow-Credentials', 'true')
-      //     .set('Access-Control-Allow-Origin', 'http://localhost:4200')
-      //     .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE, PUT, OPTIONS')
-      //     .set('Access-Control-Allow-Headers', '*')
-      // }
     )
   }
 
