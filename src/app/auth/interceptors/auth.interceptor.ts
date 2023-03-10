@@ -8,12 +8,11 @@ import {
   HttpErrorResponse
 } from '@angular/common/http';
 import { BehaviorSubject, filter, Observable, switchMap, take } from 'rxjs';
-import { AuthService } from '../services/auth.service';
-import { TokenStorageService } from '../services/token-storage.service';
 import { throwError } from 'rxjs';
-import { catchError} from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
+import { AuthService, TokenStorageService } from 'src/app/@core/auth-services';
 
-const TOKEN_HEADER_KEY = 'x-user-token';          
+const TOKEN_HEADER_KEY = 'x-user-token';
 
 
 @Injectable()
@@ -53,12 +52,12 @@ export class AuthInterceptor implements HttpInterceptor {
 
             this.tokenService.saveToken(token.accessToken);
             this.refreshTokenSubject.next(token.accessToken);
-            
+
             return next.handle(this.addTokenHeader(request, token.accessToken));
           }),
           catchError((err) => {
             this.isRefreshing = false;
-            
+
             this.tokenService.signOut();
             return throwError(err);
           })
