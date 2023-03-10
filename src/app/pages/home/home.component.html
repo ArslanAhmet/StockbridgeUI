@@ -1,11 +1,12 @@
-<mat-toolbar class="mat-elevation-z8">
+<mat-toolbar class="mat-elevation-z8 d-flex justify-content-end">
   <span class="header-trigger">
     <button mat-icon-button *ngIf="sidenav.mode === 'side'" (click)="sidenav.toggle()">
       <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
       <mat-icon *ngIf="sidenav.opened"> menu_open </mat-icon>
     </button>
   </span>
-  <button class="btn btn-outline-success my-2 my-sm-0" (click)="logout()" type="submit">Logout</button>
+  <button class="btn btn-outline-success my-2 my-sm-0 d-flex justify-content-end" (click)="logout()"
+    type="submit">Logout</button>
 </mat-toolbar>
 <mat-sidenav-container #navcontainer>
   <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">

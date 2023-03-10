@@ -20,7 +20,7 @@ export class HomeComponent {
     private tokenService: TokenStorageService,
     private router: Router,
     private connectService: ConnectService) {
-    console.log("DashboardComponent initialized ");
+
 
     this.connectService.messages.subscribe((msg) => {
       console.log("Response from websocket: " + msg);
@@ -48,6 +48,7 @@ export class HomeComponent {
       });
   }
   logout() {
+    console.log("navigate to /auth/login ");
     this.tokenService.signOut();
     this.router.navigate(["/auth/login"]);
   }
