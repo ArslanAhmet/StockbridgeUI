@@ -2,8 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
-import { AuthService } from "../../services/auth.service";
-import { TokenStorageService } from "../../services/token-storage.service";
+import { AuthService, TokenStorageService } from "src/app/@core/auth-services";
 
 @Component({
   selector: "angular-login-login",
@@ -37,13 +36,13 @@ export class LoginComponent {
     }
 
     this.authService
-      .login(this.loginForm?.value.username, this.loginForm?.value.password)
+      .loginWithAdress(this.loginForm?.value.username, this.loginForm?.value.password)
       .subscribe(
         (result) => {
           if (result.data) {
             this.tokenStorage.saveToken(result.data.token);
             this.tokenStorage.saveUser(result.data);
-            this.router.navigate(["/pages/dashboard"]);
+            this.router.navigate(["/pages/home"]);
             this.toastr.success("Login Success", "Success");
           } else {
             this.toastr.error(result.error, "Error");

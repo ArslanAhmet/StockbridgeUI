@@ -5,6 +5,7 @@
 export const environment = {
   server: 'https://localhost:44334/api/',
   WebSocket_Url: "ws://66.70.229.82:8181",
+  AuthroizeUrl: "http://66.70.229.82:8181",
   production: false
 };
 
